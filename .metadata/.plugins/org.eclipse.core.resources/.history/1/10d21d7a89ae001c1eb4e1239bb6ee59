@@ -1,0 +1,62 @@
+package stepdefination;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class LoginSD 
+{
+
+	WebDriver driver;
+	
+@Given("^User Should on RHP$")
+public void user_Should_on_RHP() throws Throwable 
+{
+	driver=new FirefoxDriver();
+	
+	//Maximise
+	
+	driver.manage().window().maximize();
+	
+	//Url
+	
+	driver.get("http://122.175.8.158/ranford2");
+	
+}
+
+@When("^User Enters Username and Password and login$")
+public void user_Enters_Username_and_Password_and_login() throws Throwable
+{
+	driver.findElement(By.id("txtuId")).sendKeys("Admin");
+	driver.findElement(By.id("txtPword")).sendKeys("Mq$ystems@");
+	driver.findElement(By.xpath("//input[contains(@name,'login')]")).click();
+
+}
+
+@Then("^User Validates Admin Login$")
+public void user_Validates_Admin_Login() throws Throwable 
+{
+	String Expval="Welcome to Admin";
+	
+ 
+	  String Actval=driver.findElement(By.xpath("//font[contains(@size,'3')]")).getText();
+			System.out.println(Actval);
+			//Condition
+			
+			if (Expval.equalsIgnoreCase(Actval)) 
+			{
+				System.out.println("Admin Login Succ");
+			}
+			else
+			{
+				System.out.println("Admin Login failed");
+			}
+
+}
+
+
+}

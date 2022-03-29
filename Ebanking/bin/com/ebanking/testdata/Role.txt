@@ -1,0 +1,4 @@
+RoleName###RoleType###Results
+TellerMqHdfcbank###E
+ClerkMqHdfcbank###E
+CashierMqHdfcbank###E
